@@ -1,0 +1,38 @@
+/* リセットCSS */
+html{
+  color:#000;
+  background:#FFF;
+}
+
+body {
+  font-size: 15px;
+  margin: 0 auto;
+  font-family: 'Sawarabi Gothic', sans-serif;
+}
+h1,h2,h3,h4,h5,h6,p {
+  padding: 10px 0;
+  margin: 0;
+}
+
+ul,li {
+  padding: 0;
+  margin: 0;
+}
+
+/* ヘッダー */
+header {
+  height: 50px;
+  background-color: rgb(163, 157, 157);
+}
+
+/* フッター */
+footer {
+  height: 50px;
+  background-color: rgb(163, 157, 157);
+}
+
+/* body */
+body{
+  background-color: #fff;
+}
+
