@@ -1,13 +1,11 @@
 /* リセットCSS */
-html{
-  color:#000;
-  background:#FFF;
-}
 
-body {
+html,body {
+  color: #fff;
+  background-color: #000;
   font-size: 15px;
   margin: 0 auto;
-  font-family: 'Sawarabi Gothic', sans-serif;
+  font-family: 'ヒラギノ明朝', serif;
 }
 h1,h2,h3,h4,h5,h6,p {
   padding: 10px 0;
@@ -23,6 +21,8 @@ ul,li {
 header {
   height: 50px;
   background-color: rgb(163, 157, 157);
+  display: flex;
+  
 }
 
 /* フッター */
@@ -30,9 +30,3 @@ footer {
   height: 50px;
   background-color: rgb(163, 157, 157);
 }
-
-/* body */
-body{
-  background-color: #fff;
-}
-

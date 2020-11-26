@@ -1,7 +1,7 @@
 <div class="contents row">
   <div class="container">
-    <h3>美味しいごはんを投稿する</h3>
-    <%= form_with(model: @tweet, local: true) do |form| %>
+    <h3>美味しいごはんを載せてね</h3>
+    <%= form_with model: @tweet, local: true do |form| %>
       <%= form.file_field :images, name: 'tweet[images][]', placeholder: "Meshi no Gazo", id: 'tweet_image' %>
       <%= form.text_area :text, placeholder: "text", rows: "10" %>
       <%= form.submit "SEND" %>
