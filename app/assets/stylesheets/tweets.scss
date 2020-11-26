@@ -31,3 +31,26 @@ a {
   font-size: 40px;
   border-bottom: 1px solid #fff;
 }
+
+.tweet-btn {
+  width: 120px;
+  background: #3ccace;
+  text-align: center;
+  border-radius: 4%;
+  bottom: 32px;
+  right: 32px;
+  position: fixed;
+  padding: 15px;
+}
+
+.btn-text {
+  color: #fff;
+  display: block;
+  font-size: 18px;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.btn-icon {
+  width: 60%;
+}

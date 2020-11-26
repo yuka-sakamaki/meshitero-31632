@@ -4,3 +4,7 @@
     <h2>美味しいメシの写真をアゲろ</h2>
   </div>
 </div>
+<%= link_to('/tweets/new', class: 'tweet-btn') do %>
+  <span class='btn-text'>出品する</span>
+  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "btn-icon" %>
+<% end %>
