@@ -1,15 +1,21 @@
-<div class="contents row">
-  <div class="container">
-    <h3>美味しいごはんを載せてね</h3>
-    <%= form_with(model: @tweet, local: true) do |form| %>
-      <%= form.file_field :images, name: 'tweet[images][]', placeholder: "Meshi no Gazo", id: 'tweet_image' %>
-      <%= form.text_area :text, placeholder: "text", rows: "10" %>
-      <%= form.submit "SEND" %>
-      <div id="image-list"></div>
-    <% end %>
-  </div>
-</div>
+<%= form_with model: @tweet, url: tweets_path, class:'form-wrap', local: true do |f| %>
+  <div class='message-form'>
+    <div class='image-form', id='image-list'>
+      <%= f.file_field :image %>
+    </div>
 
-<% @tweet.images.each do |image| %>
-  <%= image_tag image, class: 'images' %>
+    <div class="message-field">
+      <%= f.label :text,  "つぶやき" %>
+      <%= f.text_area :text, class:"input-message" %>
+    </div>
+    <div class="tag-field", id='tag-field'>
+      <%= f.label :name, "タグ" %>
+      <%= f.text_field :name, class:"input-tag" %>
+    </div>
+    <div id="search-result">
+    </div>
+  </div>
+  <div class="submit-post">
+    <%= f.submit "Send", class: "submit-btn" %>
+  </div>
 <% end %>

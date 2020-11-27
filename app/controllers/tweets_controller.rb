@@ -2,25 +2,26 @@ class TweetsController < ApplicationController
   before_action :move_to_index, except: [:index]
 
   def index
-    @tweet = Tweet.order('created_at DESC')
+    @tweets = Tweet.all.order(created_at: :desc)
   end
 
   def new
-    @tweet = Tweet.new
+    @tweet = TweetsTag.new
   end
 
   def create
-    @tweet = Tweet.create(tweet_params)
-    if @tweet.save
-      redirect_to root_path
+    @tweet = TweetsTag.new(tweet_params)
+    if @tweet.valid?
+      @tweet.save
+      return redirect_to root_path
     else
-      render :new
+      render "new"
     end
   end
 
   private
   def tweet_params
-    params.require(:tweet).permit(:text, images:[]).merge(user_id: current_user.id)
+    params.require(:tweets_tag).permit(:text, :name, :image).merge(user_id: current_user.id)
   end
 
   def move_to_index

@@ -1,24 +1,30 @@
-<div class="main">
-<div class="top-wrapper">
-  <div class="title-contents">
-    <h1>飯テロ.</h1>
-    <h2>美味しいメシの写真をアゲろ</h2>
+<div class="header">
+  <div class="inner-header">
+    <h1 class="title">
+    飯テロ.
+    </h1>
+    <li class='new-post'>
+      <%= link_to "New Post", new_tweet_path, class:"post-btn"%>
+    </li>
   </div>
 </div>
 
-
-
-<% @tweets.each do |tweet| %>
-  <%= tweet.content%>
-  <div class="tweets">
-    <% tweet.images.each do |image| %>
-      <%= image_tag image, class: 'images' %>
-    <% end %>
+<div class="main">
+  <div class="message-wrap">
+    <% @tweets.each do |tweet|%>
+      <div class="message">
+        <%= image_tag tweet.image.variant(resize: '500x500'), class: "tweet-img" if tweet.image.attached? %>
+        <p class="text">
+          <%= tweet.text %>
+        </p>
+        <ul class="tag">
+          <li class="tag-list">
+            <%tweet.tags.each do |tag| %>
+              #<%=tag.name%>
+            <%end%>
+          </li>
+        </ul>
+      </div>
+    <%end%>
   </div>
-<% end %>
-
-<%= link_to('/tweets/new', class: 'tweet-btn') do %>
-  <span class='btn-text'>出品する</span>
-  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "btn-icon" %>
-<% end %>
 </div>

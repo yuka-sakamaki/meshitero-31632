@@ -1,8 +1,7 @@
 class Tweet < ApplicationRecord
   has_many :tweet_tag_relations
   has_many :tags, through: :tweet_tag_relations
-  has_many_attached :images
+  has_one_attached :image
+  belongs_to :user
 
-  validates :text, presence: true
-  validates :images, presence: true
 end
