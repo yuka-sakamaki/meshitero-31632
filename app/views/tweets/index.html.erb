@@ -24,6 +24,7 @@
             <%end%>
           </li>
         </ul>
+        <%=link_to "by#{tweet.user.nickname}", user_path(tweet.user.id), class: "tweet-user" %>
       </div>
     <%end%>
   </div>
