@@ -10,10 +10,16 @@
 </div>
 
 <div class="main">
-  <div class="message-wrap">
+  <div class="tweet-wrap">
     <% @tweets.each do |tweet|%>
-      <div class="message">
-        <%= image_tag tweet.image.variant(resize: '500x500'), class: "tweet-img" if tweet.image.attached? %>
+      <div class="tweet">
+        <%= image_tag tweet.image.variant(resize: '100x100'), class: 'tweet-image' if tweet.image.attached? %>
+        <span><%= image_tag 'arrow_top.png' %></span>
+          <ul class="more_list">
+            <li>
+              <%= link_to '詳細', tweet_path(tweet.id), method: :get %>
+            </li>
+          </ul>
         <p class="text">
           <%= tweet.text %>
         </p>
