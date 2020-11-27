@@ -1,10 +1,24 @@
+<div class="main">
 <div class="top-wrapper">
   <div class="title-contents">
     <h1>飯テロ.</h1>
     <h2>美味しいメシの写真をアゲろ</h2>
   </div>
 </div>
+
+
+
+<% @tweets.each do |tweet| %>
+  <%= tweet.content%>
+  <div class="tweets">
+    <% tweet.images.each do |image| %>
+      <%= image_tag image, class: 'images' %>
+    <% end %>
+  </div>
+<% end %>
+
 <%= link_to('/tweets/new', class: 'tweet-btn') do %>
   <span class='btn-text'>出品する</span>
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "btn-icon" %>
 <% end %>
+</div>

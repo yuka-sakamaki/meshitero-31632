@@ -5,6 +5,11 @@
       <%= form.file_field :images, name: 'tweet[images][]', placeholder: "Meshi no Gazo", id: 'tweet_image' %>
       <%= form.text_area :text, placeholder: "text", rows: "10" %>
       <%= form.submit "SEND" %>
+      <div id="image-list"></div>
     <% end %>
   </div>
 </div>
+
+<% @tweet.images.each do |image| %>
+  <%= image_tag image, class: 'images' %>
+<% end %>
