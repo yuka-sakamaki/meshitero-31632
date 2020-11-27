@@ -14,4 +14,5 @@ class TweetsTag
 
     TweetTagRelation.create(tweet_id: tweet.id, tag_id: tag.id)
   end
+  
 end

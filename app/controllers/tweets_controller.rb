@@ -20,7 +20,26 @@ class TweetsController < ApplicationController
   end
 
   def show
+    @tweet = TweetsTag.find(tweet_params[:id])
+  end
+
+  def edit
     @tweet = Tweet.find(params[:id])
+  end
+
+  def update
+    if tweet.update
+      redirect_to root_path
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    tweet = Tweet.find(params[:id])
+    if tweet.destroy
+      redirect_to root_path
+    end
   end
 
   def search

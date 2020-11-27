@@ -1,11 +1,26 @@
 /* リセットCSS */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+ul,
+li,
+h1,
+h2,
+p,
+div {
+  margin: 0;
+  padding: 0;
+}
 
 html,body {
   color: #fff;
   background-color: #000;
   font-size: 15px;
   margin: 0 auto;
-  font-family: 'ヒラギノ明朝', serif;
+  font-family: 'メイリオ', 'Meiryo' sans-serif;
 }
 h1,h2,h3,h4,h5,h6,p {
   padding: 10px 0;
