@@ -1,45 +1,19 @@
-<div class="header">
-  <div class="inner-header">
-    <h1 class="title">
-    飯テロ.
+<main class="main">
+  <div class="inner">
+    
+    <h1 class="page-heading">
+     飯テロ
     </h1>
-    <li class='new-post'>
-      <%= link_to "New Post", new_tweet_path, class:"post-btn"%>
-    </li>
+    <% if user_signed_in? %>
+    <div class="greeting">
+    <%= "こんにちは、"%>
+      <%= link_to "#{current_user.nickname}さん", "/users/#{current_user.id}", class: :greeting_link %>
+    </div>
+    <% end %>
+    <div class="card_wrapper">
+     <% @tweets.each do |tweet| %>
+      <%= render partial: 'tweet', locals: {tweet: tweet } %>
+     <% end %>
+    </div>
   </div>
-</div>
-
-<div class="main">
-  <div class="tweet-wrap">
-    <% @tweets.each do |tweet|%>
-      <div class="tweet">
-        <%= image_tag tweet.image.variant(resize: '100x100'), class: 'tweet-image' if tweet.image.attached? %>
-        <span><%= image_tag 'arrow_top.png' %></span>
-          <div class="more">
-          <ul class="more_list">
-            <li>
-              <%= link_to '詳細', tweet_path(tweet.id), method: :get %>
-            </li>
-            <li>
-              <%= link_to '編集', edit_tweet_path(tweet.id), method: :get %>
-            </li>
-            <li>
-              <%= link_to '削除', tweet_path(tweet.id), method: :delete %>
-            </li>
-          </ul>
-          </div>
-        <p class="text">
-          <%= tweet.text %>
-        </p>
-        <ul class="tag">
-          <li class="tag-list">
-            <%tweet.tags.each do |tag| %>
-              #<%=tag.name%>
-            <%end%>
-          </li>
-        </ul>
-        <%=link_to "by#{tweet.user.nickname}", user_path(tweet.user.id), class: "tweet-user" %>
-      </div>
-    <%end%>
-  </div>
-</div>
+</main>

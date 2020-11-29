@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card_body">
+      <div class="card_image">
+      <%= image_tag tweet.image if tweet.image.attached? %>
+      </div>
+        <div class="more">
+          <span><%= image_tag 'arrow_top.png' %></span>
+            <ul class="more_list">
+              <li>
+                <%= link_to '詳細', tweet_path(tweet.id), method: :get %>
+              </li>
+            <%# <% if user_signed_in?? && (current_user.id == tweet.user_id) %> 
+              <li>
+                <%= link_to '編集', edit_tweet_path(tweet.id), method: :get %>
+              </li>
+              <li>
+                <%= link_to '削除', tweet_path(tweet.id), method: :delete %>
+              </li>
+            <%# <% end %> 
+          </ul>
+          </div>
+          <p class="card_summary">
+           <%= tweet.text %>
+          </p>
+        
+        <ul class="tag">
+          <li class="tag-list">
+            <%tweet.tags.each do |tag| %>
+              #<%=tag.name%>
+            <%end%>
+          </li>
+        </ul>
+        <%=link_to "by#{tweet.user.nickname}", user_path(tweet.user_id), class: :card_user %>
+    </div>
+</div>

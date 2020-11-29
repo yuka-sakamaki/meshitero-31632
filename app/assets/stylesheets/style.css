@@ -15,33 +15,249 @@ div {
   padding: 0;
 }
 
-html,body {
-  color: #fff;
-  background-color: #000;
-  font-size: 15px;
-  margin: 0 auto;
-  font-family: 'メイリオ', 'Meiryo' sans-serif;
-}
-h1,h2,h3,h4,h5,h6,p {
-  padding: 10px 0;
-  margin: 0;
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN W3", sans-serif;
+  color: #3b4043;
 }
 
-ul,li {
-  padding: 0;
-  margin: 0;
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+a {
+  text-decoration: none;
+  color: #3b4043;
 }
 
 /* ヘッダー */
 header {
-  height: 50px;
-  background-color: rgb(163, 157, 157);
+  background-color:rgb(235, 201, 91);
+  margin-bottom: 48px;
+  padding: 20px 0;
+}
+
+.inner{
+  width: 1024px;
+  margin: 0 auto;
+}
+
+.nav {
+  width: 100%;
   display: flex;
-  
+  justify-content: space-between;
+}
+
+.nav_btn{
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 0.8em;
+  color: tomato;
+  text-decoration: none;
+  user-select: none;
+  border: 1px tomato solid;
+  border-radius: 3px;
+  transition: 0.4s ease;
+}
+
+.nav_btn:hover{
+  color: #fff;
+  background: tomato;
+}
+
+/*フォーム周り*/
+.form_wrapper {
+  min-height: calc(100vh - 161px);
+}
+
+.field {
+  margin: 15px 0;
+}
+
+.actions {
+  margin-bottom: 40px;
+}
+
+.form_btn {
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 0.8em;
+  text-decoration: none;
+  user-select: none;
+  color: tomato;
+  border: 1px tomato solid;
+  border-radius: 3px;
+  transition: 0.2s ease;
+}
+
+.form_btn:hover{
+  color: #fff;
+  background: tomato;
+  cursor: pointer;
+}
+
+/*メイン(TOPページ)*/
+.greeting {
+  margin-bottom: 20px;
+}
+
+.greeting_link{
+  text-decoration: underline;
+}
+
+.page-heading{
+  font-size: 30px;
+  margin-bottom: 28px;
+}
+
+.card_wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  min-height: calc(100vh - 161px);
+}
+
+.card{
+  width: calc((100% - 50px) / 3);
+  margin-bottom: 40px;
+}
+
+.card_title {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.card_summary {
+  font-size: 20px;
+}
+
+.card_user{
+  display: block;
+  font-size: 12px;
+  color: #999;
+  text-align: right;
+  text-decoration: underline;
+}
+
+/*ツイート*/
+
+div.card_wrapper div.card {
+  margin: 20px 0;
+  padding: 30px;
+  position: relative;
+  height: 400px;
+  color: #fff;
+  background-size: cover;
+  background-position: center center;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
+}
+
+div.card_wrapper div.card:after{
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  *zoom: 1;
+
+  z-index: 1;
+  border-radius: 3px;
+}
+
+div.card_wrapper div.card .more{
+  position: absolute;
+  cursor: pointer;
+  top: 20px;
+  right: 30px;
+  z-index: 2;
+  height: 100px;
+  width: 80px;
+  text-align: right;
+}
+
+div.card_wrapper div.card .more:hover ul.more_list {
+  display: block;
+}
+
+div.card_wrapper div.card .more ul.more_list {
+  position: absolute;
+  text-align: left;
+  width: 80px;
+  right: 0;
+  font-size: 12px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  display: none;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+div.card_wrapper div.card .more ul.more_list li {
+  background-color: rgb(235, 201, 91);
+  border-bottom: 1px solid #ddd;
+}
+
+div.card_wrapper div.card .more ul.more_list li:last-child {
+  border-bottom: 0;
+}
+
+div.card_wrapper div.card .more ul.more_list li a:hover {
+  background-color: tomato;
+  color: #fff;
+}
+
+div.card_wrapper div.card p{
+  position: absolute;
+  left: 30px;
+  right: 100px;
+  bottom: 30px;
+  margin: 0;
+  font-size: 20px;
+  z-index: 2;
+  font-weight: bold;
+  text-shadow: 0 0 2px #000, 0 0 1px #000, 0 0 1px #000;
+}
+
+div.card_wrapper div.card span.name {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  z-index: 2;
+  font-size: 13px;
+}
+
+div.card_wrapper div.card span.name a {
+  display: block;
+  color: #aaa;
+}
+
+div.card_wrapper div.card span.name a:hover{
+  text-decoration: underline;
+  color: #aaa;
+}
+
+div.card_wrapper div.card span.name span {
+  font-size: 9px;
+  display: block;
 }
 
 /* フッター */
 footer {
-  height: 50px;
-  background-color: rgb(163, 157, 157);
+  background-color: rgb(235, 201, 91);
+  padding: 10px 0;
+}
+
+.copyright {
+  text-align: center;
+  color: #fff;
+  font-size: 10px;
 }

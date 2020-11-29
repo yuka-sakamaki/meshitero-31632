@@ -10,9 +10,11 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = TweetsTag.new(tweet_params)
-    if @tweet.valid?
-      @tweet.save
+    @tweet = current_user.tweets.build(tweet_params)
+    tag_list = params[:tweet][:tag_ids].split(',')
+    if @tweet.save
+      @tweet.save_tags(tag_list)
+      # flash[:success] = '投稿しました!'
       return redirect_to root_path
     else
       render "new"
@@ -25,11 +27,16 @@ class TweetsController < ApplicationController
 
   def edit
     @tweet = Tweet.find(params[:id])
+    @tag_list = @tweet.tags.pluck(:name).join(",") #タグのnameの配列を取得
   end
 
   def update
-    if tweet.update
-      redirect_to root_path
+    @tweet = Tweet.find(params[:id])
+    tag_list = params[:tweet][:tag_ids].split(',')
+    if @tweet.update_attributes(tweet_params)
+      @tweet.save_tags(tag_list)
+      #flash[:success] = '投稿を編集しました‼'
+      redirect_to @tweet
     else
       render "edit"
     end
@@ -52,6 +59,7 @@ class TweetsController < ApplicationController
   def tweet_params
     params.require(:tweets_tag).permit(:text, :name, :image).merge(user_id: current_user.id)
   end
+
 
   def move_to_index
     unless user_signed_in?
