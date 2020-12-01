@@ -1,13 +1,13 @@
 <div class="card">
-    <div class="card_body">
-      <div class="card_image">
+ <% @tweets.each do |tweet| %>
+    <div class="card_image" >
       <%= image_tag tweet.image if tweet.image.attached? %>
-      </div>
+    </div>
         <div class="more">
           <span><%= image_tag 'arrow_top.png' %></span>
             <ul class="more_list">
               <li>
-                <%= link_to '詳細', tweet_path(tweet.id), method: :get %>
+                <%= link_to '詳細/コメント', tweet_path(tweet.id), method: :get %>
               </li>
             <%# <% if user_signed_in?? && (current_user.id == tweet.user_id) %> 
               <li>
@@ -18,18 +18,19 @@
               </li>
             <%# <% end %> 
           </ul>
-          </div>
+        </div>
+        <div class="text">
           <p class="card_summary">
            <%= tweet.text %>
           </p>
-        
         <ul class="tag">
           <li class="tag-list">
             <%tweet.tags.each do |tag| %>
-              #<%=tag.name%>
+               <span><%= link_to "#{tag.name}", tag_tweets_path(tag_id: tag.id)%></span>
             <%end%>
           </li>
         </ul>
+        </div>
         <%=link_to "by#{tweet.user.nickname}", user_path(tweet.user_id), class: :card_user %>
-    </div>
+        <% end %>
 </div>

@@ -3,6 +3,7 @@ class TweetsController < ApplicationController
 
   def index
     @tweets = Tweet.all.order(created_at: :desc)
+    #@tweet_tags = Tag.all
   end
 
   def new
@@ -10,31 +11,30 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = current_user.tweets.build(tweet_params)
-    tag_list = params[:tweet][:tag_ids].split(',')
-    if @tweet.save
-      @tweet.save_tags(tag_list)
-      # flash[:success] = '投稿しました!'
+    @tweet = TweetsTag.new(tweet_params)           
+    #@tweet_tags = params[:tweet][:name]
+    if @tweet.valid?
+      @tweet.save
       return redirect_to root_path
     else
       render "new"
     end
-  end
+ end
 
   def show
-    @tweet = TweetsTag.find(tweet_params[:id])
+    @tweet = Tweet.find(params[:id])
+    #@tweet_tags = @tweet.tags
   end
 
   def edit
     @tweet = Tweet.find(params[:id])
-    @tag_list = @tweet.tags.pluck(:name).join(",") #タグのnameの配列を取得
+    #@tweet_tags = @tweet.tags.pluck(:name).join(",") #タグのnameの配列を取得
   end
 
   def update
     @tweet = Tweet.find(params[:id])
-    tag_list = params[:tweet][:tag_ids].split(',')
-    if @tweet.update_attributes(tweet_params)
-      @tweet.save_tags(tag_list)
+    #@tweet_tags = params[:tweet][:name].split(',')
+    if @tweet.update(tweet_params)
       #flash[:success] = '投稿を編集しました‼'
       redirect_to @tweet
     else
@@ -60,11 +60,9 @@ class TweetsController < ApplicationController
     params.require(:tweets_tag).permit(:text, :name, :image).merge(user_id: current_user.id)
   end
 
-
   def move_to_index
     unless user_signed_in?
       redirect_to action: :index
     end
   end
-  
 end

@@ -1,25 +1,26 @@
-<%= form_with model: @tweet, url: tweets_path, class:'form-wrap', local: true do |f| %>
+<%= form_with model: @tweet, url: tweets_path, method: :post, class:'form-wrap', local: true do |f| %>
+
   <div class='message-form'>
     <div class='image-form', id='image-list'>
-      <%= f.file_field :image %>
+      <%= f.file_field :image, class: "images" %>
     </div>
 
-    <div class="message-field">
+    <div class="text-field">
       <%= f.label :text,  "つぶやき" %>
-      <%= f.text_area :text, class:"input-message" %>
+      <%= f.text_field :text, class:"input-message" %>
     </div>
+
     <div class="tag-field", id='tag-field'>
       <%= f.label :name, "タグ" %>
-      <%= f.text_field :name, class:"input-tag" %>
+      <%= f.text_field :name, class:"input-tag", id:'tag_ids', placeholder: "タグをつける。複数つけるには','で区切ってください。"  %>
     </div>
 
-    <%= f.text_field :tag_ids, class: "form-control", id:'tag_ids',\
-    placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
-    
     <div id="search-result">
     </div>
+
   </div>
   <div class="submit-post">
-    <%= f.submit "Send", class: "submit-btn" %>
+    <%= f.submit "投稿する", class: "submit-btn" %>
   </div>
+
 <% end %>
